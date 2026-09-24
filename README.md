@@ -116,6 +116,13 @@ Current pinned sources:
 | `rtw88-icsos-reference.tar.gz` | rtw88 Wi-Fi driver reference source |
 | `rtw8821c-firmware.tar.gz` | rtw8821c firmware reference binary + provenance note |
 
+## Licensing
+
+Original ICS-OS contrib code in this repository is licensed under GPLv2, as
+described in `LICENSE`. Pinned upstream and reference packages keep their own
+licenses. See `THIRD-PARTY.md` for the full package-by-package breakdown and
+`docs/licenses/` for the relevant license texts.
+
 ## Notes
 
 - Build artifacts (`*.o`, `*.a`, `*.exe`, `obj/`, `build/`, extracted sources)
