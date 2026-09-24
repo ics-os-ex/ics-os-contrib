@@ -27,7 +27,8 @@ CC=gcc
 # ICSOS_ROOT: provided by the standalone header above
 SDK=$(ICSOS_ROOT)/sdk
 SRC ?= $(SRC_ROOT)/extract/nethack-3.6.7-icsos
-STAGE := /tmp/icsos-nethack
+STAGE_ROOT ?= /tmp
+STAGE ?= $(STAGE_ROOT)/icsos-nethack
 OBJDIR := $(STAGE)/obj
 HACKDIR := /icsos/nethack
 

@@ -25,7 +25,8 @@ CC        := gcc
 SDK       := $(ICSOS_ROOT)/sdk
 SRC       ?= $(SRC_ROOT)/extract/binutils-2.23
 
-STAGE     := /tmp/icsos-binutils
+STAGE_ROOT ?= /tmp
+STAGE     ?= $(STAGE_ROOT)/icsos-binutils
 OBJ       := $(STAGE)/obj
 
 # Our config.h must be found as <config.h> and as the -I dir for binutils.

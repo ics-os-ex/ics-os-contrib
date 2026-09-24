@@ -45,9 +45,12 @@ MPC_C  := $(filter-out $(addprefix $(SRC)/src/,$(MPC_EXCLUDE)),\
            $(wildcard $(SRC)/src/*.c))
 OBJS   := $(patsubst $(SRC)/src/%.c,$(OBJ)/%.o,$(MPC_C))
 
-.PHONY: all libmpc test-mpc clean
+.PHONY: all install libmpc test-mpc clean
 
 all: libmpc
+
+install: all
+	@echo "mpc: library staged in component dir (no apps artifact)"
 
 libmpc: $(LIB)
 

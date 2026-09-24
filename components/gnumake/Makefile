@@ -10,7 +10,8 @@ EXE=make.exe
 CC=gcc
 # ICSOS_ROOT: provided by the standalone header above
 SDK=$(ICSOS_ROOT)/sdk
-STAGE=/tmp/icsos-make
+STAGE_ROOT ?= /tmp
+STAGE ?= $(STAGE_ROOT)/icsos-make
 CFLAGS=$(APP_CFLAGS) -nostdinc -I$(SDK)/include -I$(STAGE) -I$(STAGE)/glob -DHAVE_CONFIG_H
 LIBS=$(SDK)/tccsdk.c $(SDK)/posix.c $(SDK)/libtcc1.c $(SDK)/crt1.c $(SDK)/setjmp.c
 MAKE_C=ar.c arscan.c commands.c default.c dir.c expand.c file.c function.c \

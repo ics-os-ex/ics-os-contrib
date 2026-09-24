@@ -14,12 +14,21 @@ BUILD_ORDER := gmp mpfr mpc binutils gnumake tcc gcc nethack vim \
                 duptest apuser asloop bintest gccdriver gccboot buildtools \
                 memcorrupt threads termtest sungka pak lzozip hxdmp
 
-.PHONY: all extract clean $(BUILD_ORDER)
+STAGE_ROOT ?= /tmp
+INSTALL_ORDER ?= $(BUILD_ORDER)
+
+.PHONY: all extract install clean $(BUILD_ORDER)
 
 all: extract $(BUILD_ORDER)
 
 extract:
 	./scripts/extract.sh
+
+install: all
+	@for c in $(INSTALL_ORDER); do \
+		echo "INSTALL $$c"; \
+		$(MAKE) -C components/$$c install STAGE_ROOT=$(STAGE_ROOT) || exit 1; \
+	done
 
 $(BUILD_ORDER):
 	$(MAKE) -C components/$@

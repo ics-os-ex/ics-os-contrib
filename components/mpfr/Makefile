@@ -63,9 +63,12 @@ MPFR_C := $(filter-out $(addprefix $(SRC)/,$(MPFR_EXCLUDE)),\
 
 OBJS := $(patsubst $(SRC)/%.c,$(OBJ)/%.o,$(MPFR_C))
 
-.PHONY: all libmpfr test-mpfr clean
+.PHONY: all install libmpfr test-mpfr clean
 
 all: libmpfr
+
+install: all
+	@echo "mpfr: library staged in component dir (no apps artifact)"
 
 libmpfr: $(LIB)
 

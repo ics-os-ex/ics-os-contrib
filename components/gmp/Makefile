@@ -99,6 +99,11 @@ $(OBJ):
 # fallback rule invokes it) builds the whole library, not a single object.
 .DEFAULT_GOAL := all
 
+.PHONY: install
+
+install: all
+	@echo "gmp: library staged in component dir (no apps artifact)"
+
 .PHONY: all libgmp test-gmp clean
 all: libgmp
 libgmp: libgmp.a

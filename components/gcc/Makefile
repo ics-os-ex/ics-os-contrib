@@ -50,7 +50,8 @@ SRC       ?= $(SRC_ROOT)/extract/gcc-4.7.4
 MPFR      ?= $(SRC_ROOT)/extract/mpfr-3.0.1
 MPCSRC    ?= $(SRC_ROOT)/extract/mpc-1.0.1/src
 
-STAGE     := /tmp/icsos-gcc
+STAGE_ROOT ?= /tmp
+STAGE     ?= $(STAGE_ROOT)/icsos-gcc
 OBJ       := $(STAGE)/obj
 
 CONF      := $(CURDIR)/config.h
@@ -266,9 +267,14 @@ test-gmpmpfr: test_gmpmpfr.c $(GMPMPFR)
 	$(CC) $(CFLAGS) $(APP_LDFLAGS) $< $(SDKLIBS) -o $@ -Wl,--no-undefined
 	@echo "GCC_GMPMPFR_WIRING_OK"
 
-.PHONY: all libcpp libiberty libdecnumber libz cc1 mathlibs test-gmpmpfr clean
+.PHONY: all install libcpp libiberty libdecnumber libz cc1 mathlibs test-gmpmpfr clean
 
 all: cc1
+
+install: cc1
+	mkdir -p $(ICSOS_ROOT)/apps
+	cp $(STAGE)/cc1 $(ICSOS_ROOT)/apps/cc1.exe
+	@echo "gcc: installed cc1.exe"
 
 clean:
 	rm -rf $(STAGE)

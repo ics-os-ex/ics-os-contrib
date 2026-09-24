@@ -20,7 +20,8 @@ CC=gcc
 # ICSOS_ROOT: provided by the standalone header above
 SDK=$(ICSOS_ROOT)/sdk
 VIM_SRC ?= $(SRC_ROOT)/extract/vim-9.2.1031/src
-STAGE := /tmp/icsos-vim
+STAGE_ROOT ?= /tmp
+STAGE ?= $(STAGE_ROOT)/icsos-vim
 OBJDIR := $(STAGE)/obj
 
 # -nostdinc: only the SDK headers are visible (freestanding). The staged tree
